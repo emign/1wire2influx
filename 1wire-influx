@@ -1,0 +1,8 @@
+#! /bin/bash
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/1wire
+sensor1Data="`cat /tmp/L1v.txt`"
+sensor2Data="`cat /tmp/L2v.txt`"
+username=USERNAME
+pw=PASSWORD
+curl -i -XPOST -u $username:$pw 'http://localhost:8086/write?db=strom' --data-binary 'sensor1 verbrauch='${sensor1Data}''
+curl -i -XPOST -u $username:$pw 'http://localhost:8086/write?db=strom' --data-binary 'sensor2 verbrauch='${sensor2Data}''
